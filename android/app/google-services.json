@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "310030934301",
+    "project_id": "bayanat-task",
+    "storage_bucket": "bayanat-task.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310030934301:android:9d78ed4bc7c0f467d241f4",
+        "android_client_info": {
+          "package_name": "com.example.task_bayanat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANp4_bt20r2JkP0M3p-e0wR3OYyq16wfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310030934301:android:cde3aaf37ee6b379d241f4",
+        "android_client_info": {
+          "package_name": "com.example.task_bayanatz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANp4_bt20r2JkP0M3p-e0wR3OYyq16wfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
