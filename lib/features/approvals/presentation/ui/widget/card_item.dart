@@ -120,46 +120,47 @@ class _ApprovalRequestCardState extends State<ApprovalRequestCard> {
 
             SizedBox(height: 12.h),
 
-            // ✅ Info Rows - NOW USING REAL DATA FROM widget.request
             _buildInfoRow(
               "assets/images/User Plus.svg",
               "Requested by: ",
-              widget.request.requestedBy, // ✅ Real data
+              widget.request.requestedBy,
+              valuePngIcon: 'assets/images/Ellipse 542.png',
+              valuePngSize: 18.w,
               light,
             ),
             SizedBox(height: 8.h),
             _buildInfoRow(
               "assets/images/jobtitle.svg",
               "Job Title: ",
-              widget.request.jobTitle, // ✅ Real data
+              widget.request.jobTitle,
               light,
             ),
             SizedBox(height: 8.h),
             _buildInfoRow(
               "assets/images/department.svg",
               "Department: ",
-              widget.request.department, // ✅ Real data
+              widget.request.department,
               light,
             ),
             SizedBox(height: 8.h),
             _buildInfoRow(
               "assets/images/Calendar.svg",
               "Request Date: ",
-              _formatDate(widget.request.requestDate), // ✅ Real data formatted
+              _formatDate(widget.request.requestDate),
               light,
             ),
             SizedBox(height: 8.h),
             _buildInfoRow(
               "assets/images/Calendar.svg",
-              "Requested Timeframe: ",
-              widget.request.requestedTimeframe, // ✅ Real data
+              "Timeframe: ",
+              widget.request.requestedTimeframe,
               light,
             ),
             SizedBox(height: 8.h),
             _buildInfoRow(
               "assets/images/totaltime.svg",
               "Total Time: ",
-              _formatTotalTime(widget.request.totalTime), // ✅ Real data formatted
+              _formatTotalTime(widget.request.totalTime),
               light,
             ),
 
@@ -267,18 +268,25 @@ class _ApprovalRequestCardState extends State<ApprovalRequestCard> {
     );
   }
 
-  Widget _buildInfoRow(String icon, String label, String value, bool light) {
+  Widget _buildInfoRow(
+      String icon,
+      String label,
+      String value,
+      bool light, {
+        String? valuePngIcon, // Optional PNG icon path
+        double? valuePngSize, // Optional size for the PNG icon
+      }) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset(
           icon,
           fit: BoxFit.scaleDown,
-          width: 16.w,
-          height: 16.h,
+          width: 15.w,
+          height: 15.h,
           color: light ? Colors.grey : Colors.white60,
         ),
-        SizedBox(width: 8.w),
+        SizedBox(width: 4.w),
         Expanded(
           child: RichText(
             text: TextSpan(
@@ -290,17 +298,31 @@ class _ApprovalRequestCardState extends State<ApprovalRequestCard> {
                 TextSpan(
                   text: label,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: light ?  Color(0xff797979) : Colors.grey
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: light ? Color(0xff797979) : Colors.grey,
                   ),
                 ),
+                // Add PNG icon before value if provided
+                if (valuePngIcon != null)
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.w),
+                      child: Image.asset(
+                        valuePngIcon,
+                        width: valuePngSize ?? 16.w,
+                        height: valuePngSize ?? 16.h,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                 TextSpan(
                   text: value,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: light ?  Color(0xff2D2D2D) : Colors.white
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: light ? Color(0xff2D2D2D) : Colors.white,
                   ),
                 ),
               ],
@@ -310,7 +332,6 @@ class _ApprovalRequestCardState extends State<ApprovalRequestCard> {
       ],
     );
   }
-
   Widget _buildStatusBadge({
     required String label,
     required Color color,

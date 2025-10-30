@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:task_bayanat/core/extention.dart';
 import 'package:task_bayanat/features/approvals/presentation/ui/widget/filter_icon_widget.dart';
 
+import '../../../../../core/csutom_grid.dart';
 import '../../../../../core/search_widget.dart';
 import '../../../data/model/employee_model.dart';
 import '../../controller/requestcubit_cubit.dart';
@@ -199,11 +200,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.only(bottom: 16.sp),
                         itemCount: filteredRequests.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: isMobile ? 1 : isTablet ? 2 : 3,
-                          mainAxisExtent: 310.sp,
+                          crossAxisCount: CrossAxisCountWidget.getCrossAxisCountForDefaultTablet2(context),
+                          mainAxisExtent: isLandscape ? 276.sp : 263.sp,
                           mainAxisSpacing: 15.sp,
                           crossAxisSpacing: 15.sp,
                         ),
